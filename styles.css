@@ -1,7 +1,9 @@
 @import url(starTrail/starTrail.css);
 
 :root {
-  --background: #33464d;
+  --primary: #33464d;
+  --primary-hover: #223136;
+  --primary-active: #142125;
 }
 
 body {
@@ -15,7 +17,7 @@ body {
   padding: 0;
   font-family: serif;
 
-  background-color: var(--background);
+  background-color: var(--primary);
   color: white;
 
   overflow: auto;
@@ -26,7 +28,8 @@ body {
 }
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-weight: lighter !important;
   margin: 0;
   margin-bottom: 0.5em;
@@ -40,6 +43,9 @@ h2 {
 h3 {
   font-size: 1.5em;
 }
+h4 {
+  font-size: 1.25em;
+}
 
 * {
   box-sizing: border-box;
@@ -49,6 +55,47 @@ h3 {
 @font-face {
   font-family: "Miralova";
   src: url("assets/Miralova-Regular.ttf");
+}
+
+button {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+
+  border-radius: 0.5em;
+  border: none;
+  padding: 0.1em 0.25em;
+  background-color: var(--primary);
+
+  touch-action: manipulation;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary-hover);
+  }
+  &:active {
+    background-color: var(--primary-active);
+  }
+}
+a {
+  font-weight: bold;
+  color: var(--primary);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: var(--primary-hover);
+  }
+  &:active {
+    color: var(--primary-active);
+  }
+}
+input[type="checkbox"] {
+  font-size: inherit;
+  height: .75em;
+  width: .75em;
+  cursor: pointer;
 }
 
 .main {
@@ -72,6 +119,7 @@ h3 {
 
 .portada {
   aspect-ratio: 5/7;
+  user-select: none;
 
   background-image: url(assets/marcoWedding.png);
   background-repeat: no-repeat;
@@ -89,6 +137,7 @@ h3 {
 .fotos {
   position: relative;
   aspect-ratio: 1/1;
+  user-select: none;
 
   display: flex;
   align-items: center;
@@ -141,7 +190,7 @@ h3 {
     padding: 0.5em;
     aspect-ratio: 1;
     border-radius: 2rem;
-    background-color: var(--background);
+    background-color: var(--primary);
 
     display: flex;
     flex-direction: column;
@@ -155,18 +204,65 @@ h3 {
   text-align: center;
   padding: 2rem;
 
-  .opciones {
+  .lista {
+    margin-top: 0.5em;
+    flex: 1;
     display: flex;
-    gap: 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
 
-    > * {
-      flex: 1;
+    .regalo {
+      flex: 1 0 250px;
+      max-width: 500px;
+      margin: 0.25em;
+
+      display: flex;
+      flex-direction: column;
+
+      .nombre {
+        padding: 0.1em 0.25em;
+        border-radius: 0.5em 0.5em 0 0;
+        background-color: var(--primary);
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .precio {
+        padding: 0.1em 1.5em;
+        border-radius: 0 0 0.5em 0.5em;
+        background-color: var(--primary);
+        
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: .25em;
+      }
+
+      .img {
+        aspect-ratio: 1/1;
+        background-size: cover;
+      }
     }
   }
 
-  a {
-    font-weight: bold;
-    color: var(--background);
+  .transferencia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .datos {
+      border: 2px solid var(--primary);
+      background-color: #d9d9d0;
+      color: var(--primary);
+      border-radius: 1rem;
+      padding: 1rem;
+
+      margin-bottom: 0.5em;
+    }
   }
 }
 
@@ -176,22 +272,32 @@ footer {
   padding: 1rem;
   text-align: center;
 
-  background-color: black;
+  background-color: #2a2a2a;
   font-family: monospace;
   font-size: 1rem;
 }
 
+@media screen and (max-width: 1000px) {
+  .main {
+    font-size: 32px;
+  }
+
+  .regalos {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .main {
-    font-size: 16px;
+    font-size: 24px;
   }
 
   .fotos {
-    font-size: 2em;
-    flex-direction: column;
+    aspect-ratio: 4/6;
+    font-size: 1.5em;
 
     .foto {
-      position: static;
       width: 100% !important;
       --radius: 3rem;
 
@@ -200,14 +306,19 @@ footer {
         display: none;
       }
     }
+
+    h3 {
+      border-radius: 50%;
+    }
   }
 
   .regalos {
     font-size: 1.5em;
-    border-radius: 0;
+  }
+}
 
-    .opciones {
-      flex-direction: column;
-    }
+@media screen and (max-width: 600px) {
+  .main {
+    font-size: 16px;
   }
 }

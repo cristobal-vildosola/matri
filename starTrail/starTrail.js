@@ -15,8 +15,7 @@ document.onmousemove = (event) => {
 addEventListener("touchmove", (event) => {
   y = event.changedTouches[0].pageY;
   x = event.changedTouches[0].pageX;
-})
-
+});
 
 const spread = 50;
 function sparkle() {
@@ -41,5 +40,7 @@ function createStar(x, y) {
 }
 
 function randomStar() {
-  return ["⭐", "🌟", "✨"][Math.floor(Math.random() * 3)];
+  r = Math.random();
+  if (r < 0.1) return "💖";
+  return ["⭐", "🌟", "✨"][Math.floor(r * 3)];
 }

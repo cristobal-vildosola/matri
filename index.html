@@ -3,6 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
 
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script type="text/javascript" src="starTrail/starTrail.js"></script>
   <link rel="stylesheet" href="styles.css" />
 
@@ -15,7 +16,7 @@
 
 <div id="trail"></div>
 
-<div class="main">
+<div class="main" id="app">
   <div class="portada">
     <h1>
       <div>Mati</div>
@@ -43,18 +44,38 @@
   <div class="regalos">
     <h3>Regalos</h3>
 
-    <div class="opciones">
-      <div>
-        Puedes hacernos un regalo a través de <br />
-        <a href="https://milistadenovios.cl/" target="_blank">mi Lista de Novios</a>
+    <div>
+      Puedes hacernos un regalo a través de
+      <a href="https://milistadenovios.cl/" target="_blank">mi Lista de Novios</a>. También puedes
+      hacer una transferencia directa y poner en el mensaje qué nos estás regalando.
+    </div>
+
+    <div class="lista">
+      <div class="regalo" v-for="(regalo, index) in regalos">
+        <div class="nombre">{{regalo.nombre}}</div>
+        <div class="img" style="background-image: url(assets/p3-.jpg)"></div>
+        <div class="precio">{{regalo.precio}}.000  <input type="checkbox"></div>
+      </div>
+      <div class="regalo" v-for="_ in 5" style="height: 0; margin: 0;"></div>
+    </div>
+
+    <div class="transferencia">
+      <h4>Datos de Transferencia</h4>
+
+      <div class="datos">
+        <div>Cristobal Muñoz</div>
+        <div>19.243.515-3</div>
+        <div>Banco de Chile</div>
+        <div>Cuenta Corriente</div>
+        <div>008010482507</div>
+        <div>cristobal.vildosola@gmail.com</div>
       </div>
 
-      <div>
-        También puedes hacer una transferencia directa y poner en el mensaje qué nos estás regalando
-        😉
-      </div>
+      <button @click="copyToClipboard">copiar datos</button>
     </div>
   </div>
 </div>
 
 <footer>Hecho por Cristóbal Muñoz - 2026 - Hecho por Humanos sin IA</footer>
+
+<script type="text/javascript" src="app.js"></script>
