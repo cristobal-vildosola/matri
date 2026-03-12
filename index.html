@@ -47,17 +47,32 @@
     <div>
       Puedes hacernos un regalo a través de
       <a href="https://milistadenovios.cl/" target="_blank">mi Lista de Novios</a>. También puedes
-      hacer una transferencia directa y poner en el mensaje qué nos estás regalando.
+      hacer una transferencia directa y nos envías un mensaje de lo que nos estás regalando,
+      nuestro telegram y whatsapp están abiertos 24/7.
     </div>
 
     <div class="lista">
-      <div class="regalo" v-for="(regalo, index) in regalos">
+      <div
+        class="regalo"
+        v-for="(regalo, index) in regalos"
+        @click="regalo.elegido = !regalo.elegido"
+        :class="{ elegido: regalo.elegido}"
+      >
         <div class="nombre">{{regalo.nombre}}</div>
         <div class="img" style="background-image: url(assets/p3-.jpg)"></div>
-        <div class="precio">{{regalo.precio}}.000  <input type="checkbox"></div>
+        <div class="precio">
+          {{regalo.precio}}.000 <input type="checkbox" v-model="regalo.elegido" />
+        </div>
       </div>
-      <div class="regalo" v-for="_ in 5" style="height: 0; margin: 0;"></div>
+      <div class="regalo relleno" v-for="_ in 3" style="height: 0"></div>
     </div>
+
+    <div class="mensaje">
+      {{ mensaje }}
+      <div class="hora fantasma">{{hora}} <span>✓</span></div>
+      <div class="hora">{{hora}} <span>✓</span></div>
+    </div>
+    <div class="total">Total: {{ total }}{{total > 0 ? '.000' : ''}}</div>
 
     <div class="transferencia">
       <h4>Datos de Transferencia</h4>

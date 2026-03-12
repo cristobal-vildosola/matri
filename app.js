@@ -4,19 +4,41 @@ createApp({
   data() {
     return {
       regalos: [
-        { nombre: "Salida a Tomar Cafecito", precio: 15 },
-        { nombre: "Un Juego de Mesa", precio: 25 },
-        { nombre: "Madera para Muebles", precio: 35 },
-        { nombre: "Un Vinilo", precio: 50 },
-        { nombre: "Ida al Teatro Municipal", precio: 65 },
-        { nombre: "Afinar el piano", precio: 80 },
-        { nombre: "Ida a las Termas", precio: 100 },
-        { nombre: "", precio: 125 },
-        { nombre: "", precio: 150 },
-        { nombre: "", precio: 180 },
-        { nombre: "", precio: 250 },
+        { nombre: "una Salida a Tomar Cafecito", precio: 15, elegido: false },
+        { nombre: "un Juego de Mesa", precio: 25, elegido: false },
+        { nombre: "Madera para Muebles", precio: 35, elegido: false },
+        { nombre: "un Vinilo", precio: 50, elegido: false },
+        { nombre: "una Ida al Teatro Municipal", precio: 65, elegido: false },
+        { nombre: "Afinar el piano", precio: 80, elegido: false },
+        { nombre: "una Ida a las Termas", precio: 100, elegido: false },
+        { nombre: "x", precio: 125, elegido: false },
+        { nombre: "x", precio: 150, elegido: false },
+        { nombre: "x", precio: 180, elegido: false },
+        { nombre: "x", precio: 250, elegido: false },
       ],
     };
+  },
+
+  computed: {
+    total() {
+      return this.regalos.filter((r) => r.elegido).reduce((acc, r) => acc + r.precio, 0);
+    },
+
+    hora() {
+      const d = new Date();
+      return d.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true });
+    },
+
+    mensaje() {
+      const elegidos = this.regalos.filter((r) => r.elegido).map((r) => r.nombre);
+      if (elegidos.length == 0) return "Elije tus regalos!";
+
+      let regalos;
+      if (elegidos.length == 1) regalos = elegidos[0];
+      else regalos = `${elegidos.slice(0, -1).join(", ")} y ${elegidos.at(-1)}`;
+
+      return `Holiii!\nles regalamos ${regalos} por su matrimonio ❤️`;
+    },
   },
 
   methods: {
