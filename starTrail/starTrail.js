@@ -1,7 +1,10 @@
 let trailContainer;
+
 window.onload = function () {
-  if (document.getElementById) {
-    trailContainer = document.getElementById("trail");
+  if (document.createElement) {
+    trailContainer = document.createElement("div");
+    trailContainer.id = "trail"
+    document.body.appendChild(trailContainer);
     this.setInterval(sparkle, 20);
   }
 };
