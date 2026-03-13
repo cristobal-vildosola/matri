@@ -14,8 +14,6 @@
   <meta name="description" content="" />
 </head>
 
-<div id="trail"></div>
-
 <div class="main" id="app">
   <div class="portada">
     <h1>
@@ -28,8 +26,8 @@
   </div>
 
   <div class="fotos">
-    <div class="foto"></div>
-    <div class="foto"></div>
+    <div class="foto" style="background-image: url(assets/fotos/tesoro.jpg)"></div>
+    <div class="foto" style="background-image: url(assets/fotos/venecia.jpg)"></div>
 
     <h3>
       <div>💖 💖 💖</div>
@@ -37,8 +35,8 @@
       <div>💖 💖 💖</div>
     </h3>
 
-    <div class="foto"></div>
-    <div class="foto"></div>
+    <div class="foto" style="background-image: url(assets/fotos/matri.jpg)"></div>
+    <div class="foto" style="background-image: url(assets/fotos/colmar.jpg)"></div>
   </div>
 
   <div class="regalos">
@@ -48,7 +46,8 @@
       Puedes hacernos un regalo a través de
       <a href="https://milistadenovios.cl/" target="_blank">mi Lista de Novios</a>. También puedes
       hacer una transferencia directa y nos envías un mensaje de lo que nos estás regalando,
-      nuestro telegram y whatsapp están abiertos 24/7.
+      nuestros telegram y whatsapp están abiertos 24/7*.<br />
+      <div style="font-size: 0.5em; float: right">*No significa que vamos a responder</div>
     </div>
 
     <div class="lista">
@@ -59,9 +58,10 @@
         :class="{ elegido: regalo.elegido}"
       >
         <div class="nombre">{{regalo.nombre}}</div>
-        <div class="img" style="background-image: url(assets/p3-.jpg)"></div>
+        <div class="img" :style="{ 'background-image': `url(assets/fotos/${regalo.foto})` }"></div>
         <div class="precio">
-          {{regalo.precio}}.000 <input type="checkbox" v-model="regalo.elegido" />
+          {{regalo.precio.toLocaleString("de-DE")}}
+          <input type="checkbox" v-model="regalo.elegido" />
         </div>
       </div>
       <div class="regalo relleno" v-for="_ in 3" style="height: 0"></div>
@@ -69,10 +69,10 @@
 
     <div class="mensaje">
       {{ mensaje }}
-      <div class="hora fantasma">{{hora}} <span>✓</span></div>
-      <div class="hora">{{hora}} <span>✓</span></div>
+      <div class="hora fantasma">{{hora()}} <span>✓</span></div>
+      <div class="hora">{{hora()}} <span>✓</span></div>
     </div>
-    <div class="total">Total: {{ total }}{{total > 0 ? '.000' : ''}}</div>
+    <div class="total">Total: {{ total.toLocaleString("de-DE") }}</div>
 
     <div class="transferencia">
       <h4>Datos de Transferencia</h4>

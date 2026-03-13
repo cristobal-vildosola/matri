@@ -114,7 +114,7 @@ input[type="checkbox"] {
   font-size: 40px;
 
   > * {
-    margin-bottom: 1em;
+    margin-bottom: 4em;
     width: 100%;
   }
 }
@@ -159,7 +159,6 @@ input[type="checkbox"] {
       aspect-ratio: 4/3;
       top: 0;
       left: 0;
-      background-image: url(assets/p1.jpg);
     }
     &:nth-of-type(2) {
       border-top-right-radius: var(--radius);
@@ -167,7 +166,6 @@ input[type="checkbox"] {
       aspect-ratio: 3/4;
       top: 0;
       right: 0;
-      background-image: url(assets/p2.jpg);
     }
     &:nth-of-type(3) {
       border-bottom-left-radius: var(--radius);
@@ -175,7 +173,6 @@ input[type="checkbox"] {
       aspect-ratio: 3/4;
       bottom: 0;
       left: 0;
-      background-image: url(assets/p3.jpg);
     }
     &:nth-of-type(4) {
       border-bottom-right-radius: var(--radius);
@@ -183,7 +180,6 @@ input[type="checkbox"] {
       aspect-ratio: 4/3;
       bottom: 0;
       right: 0;
-      background-image: url(assets/p4.jpg);
     }
   }
 
@@ -197,13 +193,15 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    text-align: center;
   }
 }
 
 .regalos {
+  margin-bottom: 2em;
   border-radius: 5rem;
   background-color: var(--secondary);
-  padding: 2rem;
+  padding: 1em;
 
   text-align: center;
   display: flex;
@@ -214,47 +212,53 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: stretch;
     gap: 1rem;
+  }
 
-    .regalo {
-      flex: 1 1 250px;
-      max-width: 500px;
-      background-color: var(--primary);
-      border-radius: 0.5em;
+  .regalo {
+    flex: 1 1 250px;
+    max-width: 500px;
+    background-color: var(--primary);
+    border-radius: 0.5em;
+
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    &:hover,
+    &.elegido {
+      background-color: var(--primary-hover);
+    }
+    &.elegido {
+      outline: 1px solid #2c64ad;
+      box-shadow: 0 0 10px #2c64ad;
+    }
+
+    .nombre {
+      padding: 0.25rem 0.75rem;
+      border-radius: 1.5rem 1.5rem 0 0;
+      flex: 1;
 
       display: flex;
-      flex-direction: column;
-      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
 
-      &.elegido {
-        outline: 1px solid #2c64ad;
-        box-shadow: 0 0 10px #2c64ad;
-      }
+    .precio {
+      padding: 0.1em 1.5em;
 
-      .nombre {
-        padding: 0.1em 0.25em;
-        border-radius: 0.5em 0.5em 0 0;
-        flex: 1;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 0.25em;
+    }
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .precio {
-        padding: 0.1em 1.5em;
-
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        gap: 0.25em;
-      }
-
-      .img {
-        aspect-ratio: 1/1;
-        background-size: cover;
-      }
+    .img {
+      aspect-ratio: 1/1;
+      background-size: cover;
+      background-position: center;
     }
   }
 
@@ -316,18 +320,18 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
 
-    .datos {
-      font-family: monospace;
-      font-size: 0.75em;
-      border: 2px solid var(--primary);
-      background-color: #d9d9d0;
-      color: var(--primary);
-      border-radius: 1rem;
-      padding: 1rem;
+  .datos {
+    font-family: monospace;
+    font-size: 0.75em;
+    border: 2px solid var(--primary);
+    background-color: #d9d9d0;
+    color: var(--primary);
+    border-radius: 1rem;
+    padding: 1rem;
 
-      margin-bottom: 1rem;
-    }
+    margin-bottom: 1rem;
   }
 }
 
@@ -357,10 +361,14 @@ footer {
   .main {
     font-size: 24px;
   }
+  .fotos,
+  .regalos {
+    font-size: 1.5em;
+    margin-bottom: 2.5em;
+  }
 
   .fotos {
     aspect-ratio: 4/6;
-    font-size: 1.5em;
 
     .foto {
       width: 100% !important;
@@ -376,9 +384,8 @@ footer {
       border-radius: 50%;
     }
   }
-
   .regalos {
-    font-size: 1.5em;
+    padding: 0.5em;
   }
 }
 
@@ -386,8 +393,19 @@ footer {
   .main {
     font-size: 16px;
   }
+  .regalos {
+    font-size: 2em;
 
-  .relleno {
-    display: none !important;
+    .regalo {
+      max-width: 300px;
+    }
+
+    .datos {
+      font-size: 0.6em;
+    }
+
+    .relleno {
+      display: none !important;
+    }
   }
 }

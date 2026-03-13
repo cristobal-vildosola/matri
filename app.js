@@ -1,21 +1,23 @@
 const { createApp } = Vue;
 
+const precios = [15, 25, 35, 50, 65, 80, 100, 125, 150, 180, 250];
+
 createApp({
   data() {
     return {
       regalos: [
-        { nombre: "una Salida a Tomar Cafecito", precio: 15, elegido: false },
-        { nombre: "un Juego de Mesa", precio: 25, elegido: false },
-        { nombre: "Madera para Muebles", precio: 35, elegido: false },
-        { nombre: "un Vinilo", precio: 50, elegido: false },
-        { nombre: "una Ida al Teatro Municipal", precio: 65, elegido: false },
-        { nombre: "Afinar el piano", precio: 80, elegido: false },
-        { nombre: "una Ida a las Termas", precio: 100, elegido: false },
-        { nombre: "x", precio: 125, elegido: false },
-        { nombre: "x", precio: 150, elegido: false },
-        { nombre: "x", precio: 180, elegido: false },
-        { nombre: "x", precio: 250, elegido: false },
-      ],
+        { nombre: "Salir a Tomar Cafecito", foto: "cafecito.jpg" },
+        { nombre: "un Juego de Mesa", foto: "juego.jpg" },
+        { nombre: "Salir a un Bar", foto: "bar2.jpg" },
+        { nombre: "un Vinilo", foto: "vinilo.jpg" },
+        { nombre: "Poleras a Juego", foto: "poleras2.jpg" },
+        { nombre: "Salida en Kayak", foto: "kayak.jpg" },
+        { nombre: "Afinar el piano", foto: "piano.jpg" },
+        { nombre: "Entradas al Teatro Municipal", foto: "teatro.jpg" },
+        { nombre: "una Ida a las Termas", foto: "termas.jpg" },
+        { nombre: "Mueble Antiguo para Restaurar", foto: "buffet.jpg" },
+        { nombre: "una Noche en Venecia", foto: "venecia.jpg" },
+      ].map((x, i) => ({ ...x, precio: precios[i] * 1000, elegido: false })),
     };
   },
 
@@ -24,24 +26,24 @@ createApp({
       return this.regalos.filter((r) => r.elegido).reduce((acc, r) => acc + r.precio, 0);
     },
 
-    hora() {
-      const d = new Date();
-      return d.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true });
-    },
-
     mensaje() {
       const elegidos = this.regalos.filter((r) => r.elegido).map((r) => r.nombre);
-      if (elegidos.length == 0) return "Elije tus regalos!";
+      if (elegidos.length == 0) return "Elije uno (o más 👀) regalos!";
 
       let regalos;
       if (elegidos.length == 1) regalos = elegidos[0];
       else regalos = `${elegidos.slice(0, -1).join(", ")} y ${elegidos.at(-1)}`;
 
-      return `Holiii!\nles regalamos ${regalos} por su matrimonio ❤️`;
+      return `Holii!\nles regalamos ${regalos} por su matrimonio ❤️`;
     },
   },
 
   methods: {
+    hora() {
+      const d = new Date();
+      return d.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true });
+    },
+
     copyToClipboard() {
       navigator.clipboard.writeText(`Cristobal Muñoz
 19.243.515-3
