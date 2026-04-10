@@ -1,9 +1,9 @@
 @import url(starTrail/starTrail.css);
 
 :root {
-  --primary: #33464d;
-  --primary-hover: #223136;
-  --primary-active: #142125;
+  --primary: #2c6a81;
+  --primary-hover: #284b58;
+  --primary-active: #263d45;
   --secondary: #8d8443;
   --whatsapp: #d9fdd3;
 }
@@ -120,10 +120,10 @@ input[type="checkbox"] {
 }
 
 .portada {
-  aspect-ratio: 5/7;
+  aspect-ratio: 5.2/7;
   user-select: none;
 
-  background-image: url(assets/marcoWedding.png);
+  background-image: url(assets/savethedate-full25.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
