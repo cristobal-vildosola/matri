@@ -44,6 +44,7 @@ function createStar(x, y) {
 
 function randomStar() {
   r = Math.random();
+  if (r < 0.03) return "🐸";
   if (r < 0.1) return "💖";
   return ["⭐", "🌟", "✨"][Math.floor(r * 3)];
 }
