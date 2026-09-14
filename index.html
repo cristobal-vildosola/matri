@@ -41,18 +41,18 @@
     <h3>🎁 Regalos</h3>
 
     <div>
-      Puedes hacernos un regalo a través de
+      Si deseas darnos un regalo, puedes hacerlo a través de
       <a href="https://milistadenovios.cl/lista/matiycristobal" target="_blank"
         >mi Lista de Novios</a
       >. También puedes hacer una transferencia directa y nos envías un mensaje de lo que nos estás
       regalando, nuestros telegram y whatsapp están abiertos 24/7*.<br />
-      <div style="font-size: 0.5em; float: right">*No significa que vamos a responder</div>
+      <div style="font-size: 0.5em; float: right">*No significa que vamos a responder de inmediato</div>
     </div>
 
     <div class="lista">
       <div
         class="regalo"
-        v-for="(regalo, index) in regalos"
+        v-for="regalo in regalos"
         @click="regalo.elegido = !regalo.elegido"
         :class="{ elegido: regalo.elegido}"
       >
@@ -60,7 +60,7 @@
         <div class="img" :style="{ 'background-image': `url(assets/fotos/${regalo.foto})` }"></div>
         <div class="precio">
           {{regalo.precio.toLocaleString("de-DE")}}
-          <input type="checkbox" v-model="regalo.elegido" />
+          <input type="checkbox" v-model="regalo.elegido" :id="regalo.nombre" />
         </div>
       </div>
       <div class="regalo relleno" v-for="_ in 3" style="height: 0"></div>

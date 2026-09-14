@@ -1,6 +1,6 @@
 const { createApp } = Vue;
 
-const precios = [15, 25, 35, 50, 65, 80, 100, 125, 150, 180, 250];
+const precios = [15, 25, 35, 50, 65, 80, 100, 125, 150, 180, 250, 500];
 
 createApp({
   data() {
@@ -17,6 +17,7 @@ createApp({
         { nombre: "una Ida a las Termas", foto: "termas.jpg" },
         { nombre: "Mueble Antiguo para Restaurar", foto: "buffet.jpg" },
         { nombre: "una Noche en Venecia", foto: "venecia.jpg" },
+        { nombre: "Shrek Swarovski", foto: "shrek.webp" },
       ].map((x, i) => ({ ...x, precio: precios[i] * 1000, elegido: false })),
     };
   },
